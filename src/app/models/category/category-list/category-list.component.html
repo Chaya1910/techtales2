@@ -1,0 +1,51 @@
+<div class="container">
+  <h1>Category List</h1>
+  <div class="d-flex justify-content-end mt-3">
+    <a [routerLink]="['/admin/categories/add']" class="btn btn-primary"
+      >Add Category</a
+    >
+  </div>
+
+  <ng-container *ngIf="categories$ | async as categories">
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories">
+            <td>{{category.id}}</td>
+            <td>{{category.name}}</td>
+            <td>{{category.url}}</td>
+            <td>
+                <a class="btn btn-primary" [routerLink]="['/admin/categories', category.id]">Edit</a>
+                <!-- <a class="btn btn-danger" [routerLink]="['/admin/categories', category.id]">Delete</a> -->
+
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</ng-container>
+
+  <!-- <div>
+    <ul class="list-group">
+      <li *ngFor="let category of categories" class="list-group-item d-flex justify-content-between">
+        <div class="col-5">{{ category.name }}</div>
+        <div class="col-4">
+          <a
+            (click)="onEditHandler(category)"
+            class="btn btn-primary mx-1"
+            >Edit</a
+          >
+          <a (click)="onDeleteHandler(category.id)" class="btn btn-danger mx-1"
+          >Delete</a
+        >
+        </div>
+      </li>
+    </ul>
+  </div> -->
+</div>
